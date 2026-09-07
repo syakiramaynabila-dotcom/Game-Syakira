@@ -12,7 +12,6 @@ if (!isset($_SESSION['angka_rahasia'])) {
 // Jika tombol Tebak ditekan
 if (isset($_POST['tebak'])) {
 
-    // Memastikan percobaan belum mencapai 3
     if ($_SESSION['percobaan'] < 3) {
 
         $_SESSION['percobaan']++;
@@ -26,6 +25,14 @@ if (isset($_POST['tebak'])) {
             $_SESSION['pesan'] = "Tebakan salah!";
         }
     }
+}
+
+// Jika tombol Main Lagi ditekan
+if (isset($_POST['ulang'])) {
+
+    $_SESSION['angka_rahasia'] = rand(1, 5);
+    $_SESSION['percobaan'] = 0;
+    $_SESSION['pesan'] = "";
 }
 
 ?>
@@ -48,9 +55,11 @@ if (isset($_POST['tebak'])) {
     </p>
 
     <?php if ($_SESSION['pesan'] != "") { ?>
+
         <p>
             <b><?php echo $_SESSION['pesan']; ?></b>
         </p>
+
     <?php } ?>
 
     <?php if ($_SESSION['percobaan'] < 3 && $_SESSION['pesan'] != "Tebakan benar!") { ?>
@@ -85,6 +94,12 @@ if (isset($_POST['tebak'])) {
             </p>
 
         <?php } ?>
+
+        <form method="post">
+            <button type="submit" name="ulang">
+                Main Lagi
+            </button>
+        </form>
 
     <?php } ?>
 
