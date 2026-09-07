@@ -10,9 +10,17 @@ if (!isset($_SESSION['angka_rahasia'])) {
 
 // Jika tombol Tebak ditekan
 if (isset($_POST['tebak'])) {
+
     $_SESSION['percobaan']++;
 
     $tebakan = $_POST['angka'];
+
+    // Mengecek tebakan
+    if ($tebakan == $_SESSION['angka_rahasia']) {
+        $_SESSION['pesan'] = "Tebakan benar!";
+    } else {
+        $_SESSION['pesan'] = "Tebakan salah!";
+    }
 }
 
 ?>
