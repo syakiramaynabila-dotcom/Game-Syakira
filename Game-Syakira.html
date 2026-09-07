@@ -1,6 +1,18 @@
-<p>Silakan tebak angka dari <b>1 sampai 5</b></p>
+<?php
 
-<p>
-    Kesempatan:
-    <b><?php echo $_SESSION['percobaan']; ?> / 3</b>
-</p>
+session_start();
+
+// Membuat angka rahasia
+if (!isset($_SESSION['angka_rahasia'])) {
+    $_SESSION['angka_rahasia'] = rand(1, 5);
+    $_SESSION['percobaan'] = 0;
+}
+
+// Jika tombol Tebak ditekan
+if (isset($_POST['tebak'])) {
+    $_SESSION['percobaan']++;
+
+    $tebakan = $_POST['angka'];
+}
+
+?>
