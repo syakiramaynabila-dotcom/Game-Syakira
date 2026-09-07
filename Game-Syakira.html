@@ -1,31 +1,6 @@
-<?php
+<p>Silakan tebak angka dari <b>1 sampai 5</b></p>
 
-session_start();
-
-// Membuat angka rahasia
-if (!isset($_SESSION['angka_rahasia'])) {
-    $_SESSION['angka_rahasia'] = rand(1, 5);
-    $_SESSION['percobaan'] = 0;
-}
-
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Game Tebak Angka</title>
-</head>
-
-<body>
-
-    <h2>Game Tebak Angka</h2>
-
-    <p>Silakan tebak angka dari <b>1 sampai 5</b></p>
-
-    <p>
-        Kesempatan:
-        <b><?php echo $_SESSION['percobaan']; ?> / 3</b>
-    </p>
-
-</body>
-</html>
+<p>
+    Kesempatan:
+    <b><?php echo $_SESSION['percobaan']; ?> / 3</b>
+</p>
